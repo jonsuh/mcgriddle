@@ -1,0 +1,15 @@
+{
+  "name": "mcgriddle",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-csscomb": "^3.0.7",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}
