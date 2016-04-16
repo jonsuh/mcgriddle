@@ -30,21 +30,18 @@
     }
   }
   @else {
-    @if type-of($size) == number and $size > 0 and $size < 1 {
+    @if (type-of($size) == number and $size > 0 and $size < 1) or ($size == minor or $size == major) {
+      @if $size == minor {
+        $size: $grid-minor;
+      }
+      @else if $size == major {
+        $size: 1 - $grid-minor;
+      }
+
       $column-count: 1 / $size;
 
       $column-width    : ($grid-width - ($grid-gutter * ($column-count - 1))) / $column-count;
       $column-width-pct: (100% - ($grid-gutter-pct * ($column-count - 1))) / $column-count;
-    }
-    @else if $size == minor or $size == major {
-      @if $size == major {
-        $column-width    : ($grid-width - $grid-gutter) * (1 - $grid-minor);
-        $column-width-pct: $column-width * 100% / $grid-width;
-      }
-      @else {
-        $column-width    : ($grid-width - $grid-gutter) * $grid-minor;
-        $column-width-pct: $column-width * 100% / $grid-width;
-      }
     }
   }
 
