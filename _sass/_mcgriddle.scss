@@ -13,6 +13,26 @@
 @import "mcgriddle/settings";
 @import "mcgriddle/functions";
 
+// Container Mixin
+// ==================================================
+@mixin container {
+  max-width: $grid-width;
+
+  @if $grid-flexbox == true {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  @else {
+    &:after {
+      content: " ";
+      display: block;
+      clear: both;
+    }
+  }
+}
+
 // Columns Mixin
 // ==================================================
 @mixin columns($size: 1, $position: left, $max-width: false) {
