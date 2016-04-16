@@ -16,6 +16,10 @@
 // Container Mixin
 // ==================================================
 @mixin container {
+  @if $grid-rtl == true {
+    direction: rtl;
+  }
+
   max-width: $grid-width;
 
   @if $grid-flexbox == true {
@@ -35,37 +39,44 @@
 
 // Columns Mixin
 // ==================================================
-@mixin columns($size: 1, $position: left, $max-width: false) {
-  @if $position == center {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+@mixin columns($size: 1, $position: default, $max-width: false) {
   @if $max-width == true {
     width: 100%;
     max-width: column-width($size);
   }
-  @else {
+  @else { // $max-width == default
     width: column-width($size, %);
+  }
 
-    // Floats and margins only for non-flexbox
+  @if $position == center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @else {
     @if $grid-flexbox == false {
-      $margin: right;
+      @if $position == left or $position == right {
+        // $position == left
+        $float: left;
+        $margin: right;
 
-      @if $position == right {
-        $margin: left;
+        @if $position == right {
+          $float: right;
+          $margin: left;
+        }
+      }
+      @else { // $position == default
+        // $grid-rtl == false
+        $float: left;
+        $margin: right;
+
+        @if $grid-rtl == true {
+          $float: right;
+          $margin: left;
+        }
       }
 
-      @if $position == left or $position == right or $position == last {
-        @if $position == left or $position == right {
-          margin-#{$margin}: gutter-width(%);
-        }
-        @else {
-          margin-#{$margin}: 0;
-        }
-
-        float: $position;
-      }
+      margin-#{$margin}: gutter-width(%);
+      float: $float;
     }
   }
 }
