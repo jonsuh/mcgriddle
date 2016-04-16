@@ -30,17 +30,20 @@
     }
   }
   @else {
-    @if $size == half or $size == 1/2 {
-      $column-width    : ($grid-width - $grid-gutter) / 2;
-      $column-width-pct: (100% - $grid-gutter-pct) / 2;
-    }
-    @else if ($size == third or $size == 1/3 or $size == minor or $size == major) {
-      $column-width    : ($grid-width - ($grid-gutter * 2)) / 3;
-      $column-width-pct: (100% - ($grid-gutter-pct * 2)) / 3;
+    @if type-of($size) == number and $size > 0 and $size < 1 {
+      $column-count: 1 / $size;
 
-      @if ($size == major) {
-        $column-width:     $column-width * 2 + $grid-gutter;
-        $column-width-pct: $column-width-pct * 2 + $grid-gutter-pct;
+      $column-width    : ($grid-width - ($grid-gutter * ($column-count - 1))) / $column-count;
+      $column-width-pct: (100% - ($grid-gutter-pct * ($column-count - 1))) / $column-count;
+    }
+    @else if $size == minor or $size == major {
+      @if $size == major {
+        $column-width    : ($grid-width - $grid-gutter) * (1 - $grid-minor);
+        $column-width-pct: $column-width * 100% / $grid-width;
+      }
+      @else {
+        $column-width    : ($grid-width - $grid-gutter) * $grid-minor;
+        $column-width-pct: $column-width * 100% / $grid-width;
       }
     }
   }
