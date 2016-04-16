@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/*!
+ * McGriddle
+ * @description
+ * @author Jonathan Suh @jonsuh
+ * @site https://
+ * @link https://
+ */
+
+// Imports
+// ==================================================
+@import "mcgriddle/settings";
+@import "mcgriddle/functions";
+
+// Columns Mixin
+// ==================================================
+@mixin columns($size: 1, $position: left, $max-width: false) {
+  @if $position == center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @if $max-width == true {
+    width: 100%;
+    max-width: column-width($size);
+  }
+  @else {
+    width: column-width($size, %);
+
+    // Floats and margins only for non-flexbox
+    @if $grid-flexbox == false {
+      $margin: right;
+
+      @if $position == right {
+        $margin: left;
+      }
+
+      @if $position == left or $position == right or $position == last {
+        @if $position == left or $position == right {
+          margin-#{$margin}: gutter-width(%);
+        }
+        @else {
+          margin-#{$margin}: 0;
+        }
+
+        float: $position;
+      }
+    }
+  }
+}
