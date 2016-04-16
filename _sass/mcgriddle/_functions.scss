@@ -4,8 +4,8 @@
 
 // Gutter Width
 // ==================================================
-@function gutter-width($value: default) {
-  @if $value == % or $value == percent {
+@function gutter-width($value: %) {
+  @if $value == % {
     @return $grid-gutter * 100% / $grid-width;
   }
   @else {
@@ -15,10 +15,10 @@
 
 // Column Width
 // ==================================================
-@function column-width($size: 1, $value: default) {
+@function column-width($size: 1, $value: %) {
   $column-width    : $grid-width;
   $column-width-pct: 100%;
-  $grid-gutter-pct: gutter-width(%);
+  $grid-gutter-pct : gutter-width();
 
   @if type-of($size) == number and $size >= 1 {
     @if ($size < $grid-columns) {
@@ -45,7 +45,7 @@
     }
   }
 
-  @if $value == % or $value == percent {
+  @if $value == % {
     @return $column-width-pct;
   }
   @else {

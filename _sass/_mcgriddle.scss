@@ -15,18 +15,23 @@
 
 // Container Mixin
 // ==================================================
-@mixin container {
+@mixin container($width: true) {
   @if $grid-rtl == true {
     direction: rtl;
   }
 
-  max-width: $grid-width;
+  @if type-of($width) == number {
+    max-width: $width;
+  }
+  @else if $width == true {
+    max-width: $grid-width;
+  }
 
   @if $grid-flexbox == true {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: $grid-flexbox-justify;
   }
   @else {
     &:after {
@@ -42,10 +47,10 @@
 @mixin columns($size: 1, $position: default, $max-width: false) {
   @if $max-width == true {
     width: 100%;
-    max-width: column-width($size);
+    max-width: column-width($size, default);
   }
   @else { // $max-width == default
-    width: column-width($size, %);
+    width: column-width($size);
   }
 
   @if $position == center {
@@ -53,30 +58,69 @@
     margin-right: auto;
   }
   @else {
-    @if $grid-flexbox == false {
-      @if $position == left or $position == right {
-        // $position == left
-        $float: left;
-        $margin: right;
-
-        @if $position == right {
-          $float: right;
+    @if ($grid-flexbox == true and $grid-flexbox-justify != space-between) or $grid-flexbox == false {
+      @if $grid-flexbox == true {
+        @if $grid-flexbox-justify == flex-end {
           $margin: left;
+
+          @if $grid-rtl == true {
+            $margin: right;
+          }
+        }
+        // $grid-flexbox-justify == flex-start, flex-end, center
+        @else {
+          $margin: right;
+
+          @if $grid-rtl == true {
+            $margin: left;
+          }
         }
       }
-      @else { // $position == default
-        // $grid-rtl == false
-        $float: left;
-        $margin: right;
+      // $grid-flexbox == false
+      @else {
+        @if $position == left or $position == right {
+          // $position == left
+          $float: left;
+          $margin: right;
 
-        @if $grid-rtl == true {
-          $float: right;
-          $margin: left;
+          @if $position == right {
+            $float: right;
+            $margin: left;
+          }
+        }
+        @else { // $position == default
+          // $grid-rtl == false
+          $float: left;
+          $margin: right;
+
+          @if $grid-rtl == true {
+            $float: right;
+            $margin: left;
+          }
         }
       }
 
-      margin-#{$margin}: gutter-width(%);
-      float: $float;
+      @if $grid-flexbox == true {
+        @if $grid-flexbox-justify != space-between {
+          margin-#{$margin}: gutter-width();
+        }
+      }
+      @else { // $grid-flexbox == false
+        margin-#{$margin}: gutter-width();
+        float: $float;
+      }
     }
   }
+}
+
+// Shift Mixin
+// ==================================================
+@mixin shift($size: 1, $value: %) {
+  $margin: left;
+
+  @if $grid-rtl == true {
+    $margin: right;
+  }
+
+  margin-#{$margin}: column-width($size, $value);
 }
