@@ -1,48 +1,5 @@
-@charset "UTF-8";
-
-/*!
- * McGriddle
- * @description
- * @author Jonathan Suh @jonsuh
- * @site https://
- * @link https://
- */
-
-// Imports
 // ==================================================
-@import "mcgriddle/settings";
-@import "mcgriddle/functions";
-
-// Container Mixin
-// ==================================================
-@mixin container($width: true) {
-  @if $grid-rtl == true {
-    direction: rtl;
-  }
-
-  @if type-of($width) == number {
-    max-width: $width;
-  }
-  @else if $width == true or $width != false {
-    max-width: $grid-width;
-  }
-
-  @if $grid-flexbox == true {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: $grid-flexbox-justify;
-  }
-  @else {
-    &:after {
-      content: " ";
-      display: block;
-      clear: both;
-    }
-  }
-}
-
-// Columns Mixin
+// Columns
 // ==================================================
 @mixin columns($size: 1, $position: default, $max-width: false) {
   @if $max-width == true {
@@ -111,16 +68,4 @@
       }
     }
   }
-}
-
-// Shift Mixin
-// ==================================================
-@mixin shift($size: 1, $value: %) {
-  $margin: left;
-
-  @if $grid-rtl == true {
-    $margin: right;
-  }
-
-  margin-#{$margin}: column-width($size, $value);
 }

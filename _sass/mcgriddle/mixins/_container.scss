@@ -1,0 +1,17 @@
+// ==================================================
+// Container
+// ==================================================
+@mixin container($width: true) {
+  @if $grid-rtl == true {
+    direction: rtl;
+  }
+
+  @if type-of($width) == number {
+    max-width: $width;
+  }
+  @else if $width == true or $width != false {
+    max-width: $grid-width;
+  }
+
+  @include column-display($grid-flexbox);
+}

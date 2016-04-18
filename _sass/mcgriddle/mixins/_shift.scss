@@ -1,0 +1,12 @@
+// ==================================================
+// Shift
+// ==================================================
+@mixin shift($size: 1, $value: %) {
+  $margin: left;
+
+  @if $grid-rtl == true {
+    $margin: right;
+  }
+
+  margin-#{$margin}: column-width($size, $value) + (gutter-width($value) * $size);
+}
