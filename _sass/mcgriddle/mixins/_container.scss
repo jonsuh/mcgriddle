@@ -13,5 +13,5 @@
     max-width: $grid-width;
   }
 
-  @include column-display($grid-flexbox);
+  @include container-display;
 }

@@ -1,7 +1,11 @@
 // ==================================================
-// Column Display
+// Container Display
 // ==================================================
-@mixin column-display($flexbox: false) {
+@mixin container-display($flexbox: default) {
+  @if $flexbox == default {
+    $flexbox: $grid-flexbox;
+  }
+
   @if $flexbox == true {
     width: 100%;
     display: flex;
