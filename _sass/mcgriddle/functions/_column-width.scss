@@ -17,8 +17,8 @@
         $gutter-count: 1;
       }
 
-      $column-width    : ($grid-col * $size) + ($grid-gutter * ($size - 1));
-      $column-width-pct: ($grid-col-pct * $size) + ($grid-gutter-pct * ($size - 1));
+      $column-width    : ($grid-col * $size) + ($grid-gutter * ($gutter-count - 1));
+      $column-width-pct: ($grid-col-pct * $size) + ($grid-gutter-pct * ($gutter-count - 1));
     }
   }
   @else {

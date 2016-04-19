@@ -8,11 +8,14 @@
     $margin: right;
   }
 
-  $shift: column-width($size, $value);
+  $shift-initial: column-width($size, $value);
 
-  @if $size > 1 {
-    $shift: $shift + (gutter-width($value) * $size);
+  @if $size < 1 {
+    $shift: $shift-initial + gutter-width($value) - (gutter-width($value) * $size);
+  }
+  @else {
+    $shift: $shift-initial + gutter-width($value);
   }
 
-  margin-#{margin}: $shift;
+  margin-#{$margin}: $shift;
 }
