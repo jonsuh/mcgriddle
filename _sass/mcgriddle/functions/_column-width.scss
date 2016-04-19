@@ -11,6 +11,12 @@
       $grid-col    : ($grid-width - ($grid-gutter * ($grid-columns - 1))) / $grid-columns;
       $grid-col-pct: $grid-col * 100% / $grid-width;
 
+      $gutter-count: $size;
+
+      @if $size < 1 {
+        $gutter-count: 1;
+      }
+
       $column-width    : ($grid-col * $size) + ($grid-gutter * ($size - 1));
       $column-width-pct: ($grid-col-pct * $size) + ($grid-gutter-pct * ($size - 1));
     }
