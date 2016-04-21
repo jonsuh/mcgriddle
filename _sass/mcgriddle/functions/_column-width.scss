@@ -8,6 +8,7 @@
   $column-width-pct: 100%;
   $grid-gutter-pct : gutter-width();
 
+  // '#/#' or '# of #'
   @if type-of($size) == string {
     $size        : str-replace($size, " ");
     $index       : str-index($size, "/");
@@ -18,11 +19,21 @@
       $index-offset: 2;
     }
 
-    // #/# or # of #
     @if $index {
       $_grid-columns: to-number(str-slice($size, $index + $index-offset, str-length($size)));
       $size         : to-number(str-slice($size, 1, $index - 1));
     }
+  }
+  // # of # or # #
+  @else if type-of($size) == list {
+    @if length($size) == 3 {
+      $_grid-columns: nth($size, 3);
+    }
+    @else {
+      $_grid-columns: nth($size, 2);
+    }
+
+    $size: nth($size, 1);
   }
 
   // Integers and decimals
