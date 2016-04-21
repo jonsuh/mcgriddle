@@ -17,6 +17,8 @@
 
 // Mixins
 // ==================================================
+@import "mcgriddle/mixins/grid-direction";
+@import "mcgriddle/mixins/grid-flexbox";
 @import "mcgriddle/mixins/container-display";
 
 @import "mcgriddle/mixins/container";
