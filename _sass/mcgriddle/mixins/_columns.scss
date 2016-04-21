@@ -35,25 +35,12 @@
       }
       // $grid-flexbox == false
       @else {
-        @if $position == left or $position == right {
-          // $position == left
-          $float: left;
-          $margin: right;
+        $float: left;
+        $margin: right;
 
-          @if $position == right {
-            $float: right;
-            $margin: left;
-          }
-        }
-        @else { // $position == default
-          // $grid-rtl == false
-          $float: left;
-          $margin: right;
-
-          @if $grid-rtl == true {
-            $float: right;
-            $margin: left;
-          }
+        @if $grid-rtl == true {
+          $float: right;
+          $margin: left;
         }
       }
 
@@ -63,7 +50,9 @@
         }
       }
       @else { // $grid-flexbox == false
-        margin-#{$margin}: gutter-width();
+        @if $position != last {
+          margin-#{$margin}: gutter-width();
+        }
         float: $float;
       }
     }
