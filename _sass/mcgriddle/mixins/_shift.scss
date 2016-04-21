@@ -10,12 +10,12 @@
 
   $shift-initial: column-width($size, $value);
 
-  @if $size < 1 {
-    $shift: $shift-initial + gutter-width($value) - (gutter-width($value) * $size);
-  }
-  @else {
+  // @if $size < 1 {
+  //   $shift: $shift-initial + gutter-width($value) - (gutter-width($value) * $size);
+  // }
+  // @else {
     $shift: $shift-initial + gutter-width($value);
-  }
+  // }
 
   margin-#{$margin}: $shift;
 }
