@@ -1,0 +1,13 @@
+// ==================================================
+// Grid Flexbox
+// ==================================================
+@mixin grid-flexbox($flexbox: default) {
+  @if $flexbox == default or $flexbox != true {
+    $flexbox: false;
+  }
+  @else if $flexbox == flexbox {
+    $flexbox: true;
+  }
+
+  $grid-flexbox: $flexbox !global;
+}
