@@ -2,39 +2,57 @@
 // Column Width
 // ==================================================
 @function column-width($size: 1, $value: %) {
+  $_grid-columns: $grid-columns;
+
   $column-width    : $grid-width;
   $column-width-pct: 100%;
   $grid-gutter-pct : gutter-width();
 
-  @if type-of($size) == number and $size >= 1 {
-    @if ($size < $grid-columns) {
-      $grid-col    : ($grid-width - ($grid-gutter * ($grid-columns - 1))) / $grid-columns;
-      $grid-col-pct: $grid-col * 100% / $grid-width;
+  @if type-of($size) == string {
+    $size        : str-replace($size, " ");
+    $index       : str-index($size, "/");
+    $index-offset: 1;
 
-      $gutter-count: $size;
+    @if $index == null {
+      $index       : str-index($size, "of");
+      $index-offset: 2;
+    }
+
+    // #/# or # of #
+    @if $index {
+      $_grid-columns: to-number(str-slice($size, $index + $index-offset, str-length($size)));
+      $size         : to-number(str-slice($size, 1, $index - 1));
+    }
+  }
+
+  // Integers and decimals
+  @if type-of($size) == number and unitless($size) and $size > 0 {
+    @if ($size < $_grid-columns) {
+      $grid-col    : ($grid-width - ($grid-gutter * ($_grid-columns - 1))) / $_grid-columns;
+      $grid-col-pct: $grid-col * 100% / $grid-width;
+      $gutter-count: $size - 1;
 
       @if $size < 1 {
         $gutter-count: 1;
       }
 
-      $column-width    : ($grid-col * $size) + ($grid-gutter * ($gutter-count - 1));
-      $column-width-pct: ($grid-col-pct * $size) + ($grid-gutter-pct * ($gutter-count - 1));
+      $column-width    : ($grid-col * $size) + ($grid-gutter * $gutter-count);
+      $column-width-pct: ($grid-col-pct * $size) + ($grid-gutter-pct * $gutter-count);
     }
   }
+  // Minor/major
   @else {
-    @if (type-of($size) == number and $size > 0 and $size < 1) or ($size == minor or $size == major) {
-      @if $size == minor {
-        $size: $grid-minor;
-      }
-      @else if $size == major {
-        $size: 1 - $grid-minor;
-      }
-
-      $column-count: 1 / $size;
-
-      $column-width    : ($grid-width - ($grid-gutter * ($column-count - 1))) / $column-count;
-      $column-width-pct: (100% - ($grid-gutter-pct * ($column-count - 1))) / $column-count;
+    @if $size == major {
+      $size: 1 - $grid-minor;
     }
+    @else {
+      $size: $grid-minor;
+    }
+
+    $column-count: 1 / $size;
+
+    $column-width    : ($grid-width - ($grid-gutter * ($column-count - 1))) / $column-count;
+    $column-width-pct: (100% - ($grid-gutter-pct * ($column-count - 1))) / $column-count;
   }
 
   @if $value == % {
