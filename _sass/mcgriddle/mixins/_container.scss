@@ -1,15 +1,23 @@
 // ==================================================
 // Container
 // ==================================================
-@mixin container($width: true) {
+@mixin container($size: true) {
   @if $grid-rtl == true {
     direction: rtl;
   }
 
-  @if type-of($width) == number {
-    max-width: $width;
+  @if type-of($size) == number and $size > 0 {
+    $_grid-gutter-calc: $grid-gutter * ($grid-columns - 1);
+    $grid-col         : ($grid-width - ($_grid-gutter-calc)) / $grid-columns;
+    $gutter-count     : $size - 1;
+
+    @if $size < 1 {
+      $gutter-count: 1;
+    }
+
+    max-width: ($grid-col * $size) + ($grid-gutter * $gutter-count);
   }
-  @else if $width == true or $width != false {
+  @else if $size == true or $size != false {
     max-width: $grid-width;
   }
 

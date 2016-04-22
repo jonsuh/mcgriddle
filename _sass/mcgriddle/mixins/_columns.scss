@@ -4,7 +4,17 @@
 @mixin columns($size: 1, $position: default, $max-width: false) {
   @if $max-width == true {
     width: 100%;
-    max-width: column-width($size, default);
+    $column-width: column-width($size, default);
+
+    @if $grid-collapse == true {
+      @if $size < 1 {
+        $size: 1;
+      }
+
+      $column-width: $column-width - (gutter-width(default) * ($size - 1));
+    }
+
+    max-width: $column-width;
   }
   @else { // $max-width == default
     width: column-width($size);
@@ -50,7 +60,7 @@
         }
       }
       @else { // $grid-flexbox == false
-        @if $position != last {
+        @if $position != last and $grid-collapse == false {
           margin-#{$margin}: gutter-width();
         }
         float: $float;

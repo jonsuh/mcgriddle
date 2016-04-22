@@ -39,7 +39,14 @@
   // Integers and decimals
   @if type-of($size) == number and unitless($size) and $size > 0 {
     @if ($size < $_grid-columns) {
-      $grid-col    : ($grid-width - ($grid-gutter * ($_grid-columns - 1))) / $_grid-columns;
+      $_grid-gutter-calc: $grid-gutter * ($_grid-columns - 1);
+
+      @if $grid-collapse == true {
+        $_grid-gutter-calc: 0;
+        $grid-gutter-pct  : 0;
+      }
+
+      $grid-col    : ($grid-width - ($_grid-gutter-calc)) / $_grid-columns;
       $grid-col-pct: $grid-col * 100% / $grid-width;
       $gutter-count: $size - 1;
 
@@ -53,6 +60,13 @@
   }
   // Minor/major
   @else {
+    $_grid-gutter: $grid-gutter;
+
+    @if $grid-collapse == true {
+      $_grid-gutter   : 0;
+      $grid-gutter-pct: 0;
+    }
+
     @if $size == major {
       $size: 1 - $grid-minor;
     }
@@ -62,7 +76,7 @@
 
     $column-count: 1 / $size;
 
-    $column-width    : ($grid-width - ($grid-gutter * ($column-count - 1))) / $column-count;
+    $column-width    : ($grid-width - ($_grid-gutter * ($column-count - 1))) / $column-count;
     $column-width-pct: (100% - ($grid-gutter-pct * ($column-count - 1))) / $column-count;
   }
 
