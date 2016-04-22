@@ -8,21 +8,21 @@
 
 // Settings
 // ==================================================
-@import "mcgriddle/settings/grid";
+@import "settings/grid";
 
 // Functions
 // ==================================================
-@import "mcgriddle/functions/helpers";
+@import "functions/helpers";
 
-@import "mcgriddle/functions/gutter-width";
-@import "mcgriddle/functions/column-width";
+@import "functions/gutter-width";
+@import "functions/column-width";
 
 // Mixins
 // ==================================================
-@import "mcgriddle/mixins/grid-direction";
-@import "mcgriddle/mixins/grid-flexbox";
-@import "mcgriddle/mixins/container-display";
+@import "mixins/grid-direction";
+@import "mixins/grid-flexbox";
+@import "mixins/container-display";
 
-@import "mcgriddle/mixins/container";
-@import "mcgriddle/mixins/columns";
-@import "mcgriddle/mixins/shift";
+@import "mixins/container";
+@import "mixins/columns";
+@import "mixins/shift";
