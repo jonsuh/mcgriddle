@@ -5,7 +5,7 @@
   @if $flexbox == default or $flexbox != true {
     $flexbox: false;
   }
-  @else if $flexbox == flexbox {
+  @else if $flexbox == true {
     $flexbox: true;
   }
 
