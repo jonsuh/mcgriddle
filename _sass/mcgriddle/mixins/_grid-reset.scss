@@ -1,0 +1,8 @@
+// ==================================================
+// Grid Reset
+// ==================================================
+@mixin grid-reset {
+  $grid-collapse: false !global;
+  $grid-flexbox : false !global;
+  $grid-rtl     : false !global;
+}
