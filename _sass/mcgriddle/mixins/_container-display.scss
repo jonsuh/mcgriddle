@@ -11,6 +11,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: $grid-flexbox-justify;
+    &:after {
+      display: none;
+    }
   }
   @else {
     &:after {
