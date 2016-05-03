@@ -1,11 +1,11 @@
 // ==================================================
 // Gutter Width
 // ==================================================
-@function gutter-width($value: %) {
-  @if $value == % {
-    @return $grid-gutter * 100% / $grid-width;
+@function gutter-width($percent: true) {
+  @if $percent != true and $percent != % {
+    @return $grid-gutter;
   }
   @else {
-    @return $grid-gutter;
+    @return $grid-gutter * 100% / $grid-width;
   }
 }

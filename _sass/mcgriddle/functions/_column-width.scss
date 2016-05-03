@@ -1,7 +1,7 @@
 // ==================================================
 // Column Width
 // ==================================================
-@function column-width($size: 1, $value: %) {
+@function column-width($size: 1, $percent: true) {
   $_grid-columns: $grid-columns;
 
   $column-width    : $grid-width;
@@ -80,10 +80,10 @@
     $column-width-pct: (100% - ($grid-gutter-pct * ($column-count - 1))) / $column-count;
   }
 
-  @if $value == % {
-    @return $column-width-pct;
+  @if $percent != true and $percent != % {
+    @return $column-width;
   }
   @else {
-    @return $column-width;
+    @return $column-width-pct;
   }
 }

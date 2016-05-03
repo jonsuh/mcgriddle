@@ -1,21 +1,21 @@
 // ==================================================
 // Shift
 // ==================================================
-@mixin shift($size: 1, $value: %) {
+@mixin shift($size: 1, $percent: true) {
   $margin: left;
 
   @if $grid-rtl == true {
     $margin: right;
   }
 
-  $shift: column-width($size, $value);
+  $shift: column-width($size, $percent);
 
   // @if $size < 1 {
-  //   $shift: $shift-initial + gutter-width($value) - (gutter-width($value) * $size);
+  //   $shift: $shift-initial + gutter-width($percent) - (gutter-width($percent) * $size);
   // }
   // @else {
     @if $grid-collapse == false {
-      $shift: $shift + gutter-width($value);
+      $shift: $shift + gutter-width($percent);
     }
   // }
 

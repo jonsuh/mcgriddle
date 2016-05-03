@@ -4,14 +4,14 @@
 @mixin columns($size: 1, $position: default, $max-width: false) {
   @if $max-width == true {
     width: 100%;
-    $column-width: column-width($size, default);
+    $column-width: column-width($size, false);
 
     @if $grid-collapse == true {
       @if $size < 1 {
         $size: 1;
       }
 
-      $column-width: $column-width - (gutter-width(default) * ($size - 1));
+      $column-width: $column-width - (gutter-width(false) * ($size - 1));
     }
 
     max-width: $column-width;
