@@ -9,7 +9,8 @@
     "gulp-cssnano": "^2.1.1",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
-    "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "mq-sass": "^0.6.0"
   }
 }
