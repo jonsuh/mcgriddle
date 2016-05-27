@@ -25,6 +25,9 @@
     margin-right: auto;
   }
   @else {
+    $float: left;
+    $margin: right;
+
     @if ($grid-flexbox == true and $grid-flexbox-justify != space-between) or $grid-flexbox == false {
       @if $grid-flexbox == true {
         @if $grid-flexbox-justify == flex-end {
@@ -36,8 +39,6 @@
         }
         // $grid-flexbox-justify == flex-start, flex-end, center
         @else {
-          $margin: right;
-
           @if $grid-rtl == true {
             $margin: left;
           }
@@ -45,9 +46,6 @@
       }
       // $grid-flexbox == false
       @else {
-        $float: left;
-        $margin: right;
-
         @if $grid-rtl == true {
           $float: right;
           $margin: left;
