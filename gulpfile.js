@@ -26,7 +26,7 @@ gulp.task('sass', function() {
 
   var sassOptions = {
     includePaths: [
-      // 'node_modules/bourbon/app/assets/stylesheets',
+      'node_modules/mq-sass/stylesheets',
     ]
   };
 
