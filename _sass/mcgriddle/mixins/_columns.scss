@@ -2,7 +2,7 @@
 // Columns
 // ==================================================
 @mixin columns($size: 1, $position: default, $max-width: false) {
-  @if $max-width == true {
+  @if $max-width == max or $max-width == true {
     width: 100%;
     $column-width: column-width($size, false);
 
