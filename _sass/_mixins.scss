@@ -1,0 +1,22 @@
+// Mixins
+// ==================================================
+@mixin clearfix {
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin font-smoothing($smooth: true) {
+  $moz: auto;
+  $webkit: subpixel-antialiased;
+
+  @if $smooth == true or $smooth == on {
+    $moz: grayscale;
+    $webkit: antialiased;
+  }
+
+  -moz-osx-font-smoothing: $moz;
+  -webkit-font-smoothing : $webkit;
+}

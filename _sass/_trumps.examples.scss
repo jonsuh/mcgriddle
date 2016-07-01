@@ -1,0 +1,222 @@
+// Examples
+// ==================================================
+.section--example:target {
+  h2 {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0.2em;
+      left: -0.75em;
+      top: -0.3em;
+      bottom: -0.3em;
+      background-color: $purple;
+
+      @include mq(medium) {
+        left: -1.3em;
+        width: 0.25em;
+      }
+
+      @include mq(mid) {
+        left: -2em;
+      }
+
+      @include mq(large) {
+        left: -3em;
+      }
+    }
+  }
+}
+
+.example__container--containers {
+  margin-bottom: 0;
+}
+
+.example--containers {
+  @include container;
+
+  code {
+    padding-bottom: 0;
+  }
+}
+
+.example--containers-false {
+  @include container(false);
+
+  code {
+    padding-bottom: 0;
+  }
+}
+
+.example--columns {
+  .col-l {
+    @include columns(6);
+  }
+
+  .col-r {
+    @include columns(6, last);
+  }
+}
+
+.example--decimal-columns {
+  .col-l {
+    @include columns(3.2);
+  }
+
+  .col-m {
+    @include columns(4.2)
+  }
+
+  .col-r {
+    @include columns(4.6, last);
+  }
+}
+
+.example--minormajor {
+  .col-minor {
+    @include columns(minor);
+  }
+
+  .col-major {
+    @include columns(major, last);
+  }
+}
+
+.example--shift {
+  .col-6-s {
+    @include columns(6);
+    @include shift(1);
+  }
+
+  .col-5 {
+    @include columns(5, last);
+  }
+}
+
+.example--center {
+  .col-pct {
+    @include columns(8, center);
+  }
+
+  .col-mw {
+    @include columns(8, center, max);
+    background-color: $blue-light !important;
+  }
+}
+
+.example--relative {
+  .col-1-7 {
+    @include columns(2 of 9);
+  }
+  .col-2-7 {
+    @include columns(3 of 9);
+  }
+  .col-4-7 {
+    @include columns(4 of 9, last);
+  }
+
+  .col-l {
+    @include columns(6);
+  }
+  .col-r {
+    @include columns(6, last);
+  }
+}
+
+.example--nest {
+  .col-l {
+    @include columns(8);
+  }
+  .col-r {
+    @include columns(4, last);
+  }
+
+  .col-rl {
+    @include columns(6);
+  }
+  .col-rr {
+    @include columns(6, last);
+  }
+}
+
+@include grid-collapse(true);
+.example--collapse {
+  > .example-code.text-center:nth-of-type(1) {
+    &::before {
+      background: linear-gradient(to right,
+        $purple 8.333333333%,
+        transparent 8.333333333%,
+        transparent 16.666666667%,
+        $purple 16.666666667%,
+        $purple 25%,
+        transparent 25%,
+        transparent 33.333333333%,
+        $purple 33.333333333%,
+        $purple 41.666666667%,
+        transparent 41.666666667%,
+        transparent 50%,
+        $purple 50%,
+        $purple 58.333333333%,
+        transparent 58.333333333%,
+        transparent 66.666666667%,
+        $purple 66.666666667%,
+        $purple 75%,
+        transparent 75%,
+        transparent 83.333333333%,
+        $purple 83.333333333%,
+        $purple 91.666666667%,
+        transparent 91.666666667%,
+        transparent 100%
+      );
+    }
+  }
+
+  .col-3 {
+    @include columns(3);
+  }
+  .col-4 {
+    @include columns(4);
+    background-color: $yellow !important;
+  }
+  .col-5 {
+    @include columns(5, last);
+  }
+}
+
+@include grid-collapse;
+@include grid-direction(rtl);
+.example--rtl {
+  .col-3 {
+    @include columns(3);
+  }
+  .col-4 {
+    @include columns(4);
+  }
+  .col-5 {
+    @include columns(5, last);
+  }
+}
+
+@include grid-direction;
+@include grid-flexbox(true);
+.example--flexbox {
+  @include container;
+
+  &:after {
+    display: none;
+  }
+
+  .col-l {
+    @include columns(4);
+    height: 7em;
+  }
+  .col-m {
+    @include columns(4);
+    align-self: center;
+  }
+  .col-r {
+    @include columns(4);
+    align-self: flex-end;
+  }
+}

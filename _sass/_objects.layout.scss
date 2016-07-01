@@ -1,0 +1,42 @@
+// Layout
+// ==================================================
+.container {
+  @include container();
+
+  .container {
+    min-width: auto;
+  }
+}
+
+.section {
+  background-color: $white;
+  padding: em(30 15);
+
+  @include mq(medium) {
+    padding: em(50 25);
+  }
+
+  &.flush-top {
+    padding-top: 0;
+  }
+
+  &.flush-bottom {
+    padding-bottom: 0;
+  }
+}
+
+.writing {
+  max-width: em(540);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mq(small) {
+    max-width: em(574);
+  }
+  @include mq(medium) {
+    max-width: em(608);
+  }
+  @include mq(large) {
+    max-width: em(642);
+  }
+}

@@ -4,8 +4,242 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>McGriddle by Jonathan Suh</title>
-  <link rel="stylesheet" href="assets/css/screen.css">
+  <script src="https://use.typekit.net/jdg2ord.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <link rel="stylesheet" href="css/screen.css">
 </head>
 <body>
+<div class="grid"></div>
+
+<header class="section section--hero">
+  <div class="container">
+    <div class="hero__inner">
+      <h1 class="hero-title">McGriddle</h1>
+      <div class="hero-description">
+        <p class="flush-bottom">A Sass library designed to help you build based on a grid system.</p>
+      </div>
+    </div>
+    <div class="hero__buttons">
+      <a href="https://github.com/jonsuh/mcgriddle" class="button button--light">Download</a>
+      <a href="https://github.com/jonsuh/mcgriddle" class="button button--light">GitHub</a>
+      <a href="docs/" class="button button--light">Docs</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="writing">
+    <h2>Usage</h2>
+    <p>McGriddle is a (mostly) get-out-of-your-way Sass library designed to help you build based a grid system. Set up your grid system…</p>
+
+<pre class="highlight">
+<code><span class="nv">$grid-width</span>   <span class="p">:</span> <span class="m">64em</span><span class="p">;</span>
+<span class="nv">$grid-gutter</span>  <span class="p">:</span> <span class="m">1</span><span class="mi">.875em</span><span class="p">;</span>
+<span class="nv">$grid-columns</span> <span class="p">:</span> <span class="m">12</span><span class="p">;</span>
+<span class="nv">$grid-minor</span>   <span class="p">:</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">;</span>
+<span class="nv">$grid-collapse</span><span class="p">:</span> <span class="bp">false</span><span class="p">;</span>
+<span class="nv">$grid-flexbox</span> <span class="p">:</span> <span class="bp">false</span><span class="p">;</span>
+<span class="nv">$grid-rtl</span>     <span class="p">:</span> <span class="bp">false</span><span class="p">;</span></code>
+</pre>
+
+    <p>…and you’re ready to go.</p>
+
+<pre class="highlight">
+<code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"article"</span><span class="nt">&gt;&lt;/article&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+
+<span class="c">…</span>
+
+<span class="nc">.container</span> <span class="p">{</span> <span class="k">@include</span> <span class="nd">container</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.article</span>   <span class="p">{</span> <span class="k">@include</span> <span class="nd">columns</span><span class="p">(</span><span class="m">8</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.sidebar</span>   <span class="p">{</span> <span class="k">@include</span> <span class="nd">columns</span><span class="p">(</span><span class="m">4</span><span class="o">,</span> <span class="n">last</span><span class="p">);</span> <span class="p">}</span></code>
+</pre>
+
+    <p id="features">Features that come with McGriddle.</p>
+    <ol class="list-2-columns flush-bottom">
+      <li><a href="#containers">Containers</a></li>
+      <li><a href="#columns">Columns</a></li>
+      <li><a href="#minor-major">Minor/Major columns</a></li>
+      <li><a href="#relative">Relative columns</a></li>
+      <li><a href="#shift">Shift columns</a></li>
+      <li><a href="#center">Center columns</a></li>
+      <li><a href="#nest">Nest columns</a></li>
+      <li><a href="#collapse">Collapse gutters</a></li>
+      <li><a href="#flexbox">Flexbox support</a></li>
+      <li><a href="#rtl">Right-to-left support</a></li>
+      <li><a href="#functions">Functions</a></li>
+    </ol>
+
+  </div>
+</section>
+
+<section id="containers" class="section section--example">
+  <div class="writing">
+    <h2>Containers</h2>
+    <p class="flush-bottom">Create containers to wrap columns using the <code class="no-break">container()</code> mixin. Pass <code>false</code> as the optional argument when you don’t want the container to have a max-width.</p>
+  </div>
+</section>
+<div class="example__container example__container--containers">
+  <div class="example example--containers">
+    <code class="example-code text-center">@include container;</code>
+  </div>
+</div>
+<div class="example__container">
+  <div class="example example--containers-false">
+    <code class="example-code text-center">@include container(false);</code>
+  </div>
+</div>
+
+<section id="columns" class="section section--example">
+  <div class="writing">
+    <h2>Columns</h2>
+    <p class="flush-bottom">Create grid-based columns using the <code class="no-break">columns()</code> mixin and passing the number of columns to span as the first argument. Pass <code>last</code> as the second argument for the last column of a row to remove excess gutters (not necessary with <a href="#flexbox">flexbox</a>).
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--columns">
+    <code class="example-code text-center">@include container;</code>
+    <div class="col-l"><code class="example-code">@include columns(6);</code></div>
+    <div class="col-r"><code class="example-code">@include columns(6, last);</code></div>
+  </div>
+</div>
+<section id="columns" class="section section--example flush-top">
+  <div class="writing">
+    <p class="flush-bottom">Column values can also be decimals when you want to break out of your grid.
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--decimal-columns">
+    <code class="example-code text-center">@include container;</code>
+    <div class="col-l"><code class="example-code">@include columns(3.2);</code></div>
+    <div class="col-m"><code class="example-code">@include columns(4.2);</code></div>
+    <div class="col-r"><code class="example-code">@include columns(4.6, last);</code></div>
+  </div>
+</div>
+
+<section id="minor-major" class="section section--example">
+  <div class="writing">
+    <h2>Minor/Major columns</h2>
+    <p class="flush-bottom">Create minor and major-based columns with the <code class="no-break">columns()</code> mixin. Set the size of minor <code class="no-break">$grid-minor: 1/3</code> (where 1/3 is one-third of your grid) and the size of major is calculated based on the remainder.</p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--minormajor">
+  <code class="example-code text-center">$grid-minor: 1/3<br>@include container;</code>
+    <div class="col-minor"><code class="example-code">@include columns(minor);</code></div>
+    <div class="col-major"><code class="example-code">@include columns(major, last);</code></div>
+  </div>
+</div>
+
+<section id="relative" class="section section--example">
+  <div class="writing">
+    <h2>Relative columns</h2>
+    <p class="flush-bottom">Create relative columns to break out of your grid with the <code class="no-break">columns()</code> mixin and passing a value in the <code class="no-break"># of #</code> format as the first argument (e.g. <code class="no-break">2 of 9</code> tells the element to span 2 columns in a 9-column grid). Relative values can be written in shorthand by eliminating “of”: <code class="no-break">@include columns(2 9);</code></p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--relative">
+    <code class="example-code text-center">@include container;</code>
+    <div class="col-1-7"><code class="example-code">@include columns(2 of 9);</code></div>
+    <div class="col-2-7"><code class="example-code">@include columns(3 of 9);</code></div>
+    <div class="col-4-7"><code class="example-code">@include columns(4 of 9, last);</code></div>
+  </div>
+</div>
+
+<section id="shift" class="section section--example">
+  <div class="writing">
+    <h2 class="flush-bottom">Shift columns</h2>
+    <p>Offset columns with the <code class="no-break">shift()</code> mixin. Decimal values are also accepted.</p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--shift">
+    <code class="example-code text-center">@include container;</code>
+    <div class="col-6-s"><code class="example-code">@include columns(6);<br>@include shift(1);</code></div>
+    <div class="col-5"><code class="example-code">@include columns(5, last);</code></div>
+  </div>
+</div>
+
+<section id="center" class="section section--example">
+  <div class="writing">
+    <h2>Center columns</h2>
+    <p class="flush-bottom">Center columns by passing <code>center</code> as the second argument of <code class="no-break">columns()</code>. Centered columns have percentage-based widths by default but can be set to max-width by passing <code>max</code> as the third argument.</p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--center">
+    <code class="example-code text-center">@include container;</code>
+    <div class="col-pct"><code class="example-code">@include columns(8, center); <span class="comment no-break">// width: 65.6901%;</span></code></div>
+    <div class="col-mw"><code class="example-code">@include columns(8, center, max); <span class="comment no-break">// max-width: 42.04167em;</span></code></div>
+  </div>
+</div>
+
+<section id="nest" class="section section--example">
+  <div class="writing">
+    <h2>Nest columns</h2>
+    <p class="flush-bottom">Nest columns by wrapping nested columns in another container.</p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--nest">
+    <code class="example-code text-center">@include container;</code>
+    <div class="col-l">
+      <code class="example-code">@include columns(8, last);</code>
+      <div class="container">
+        <code class="example-code text-center">@include container;</code>
+        <div class="col-rl"><code class="example-code">@include columns(6);</code></div>
+        <div class="col-rr"><code class="example-code">@include columns(6, last);</code></div>
+      </div>
+    </div>
+    <div class="col-r"><code class="example-code">@include columns(4);</code></div>
+  </div>
+</div>
+
+<section id="collapse" class="section section--example">
+  <div class="writing">
+    <h2>Collapse gutters</h2>
+    <p class="flush-bottom">Collapse gutters by setting <code class="no-break">$grid-collapse: true</code>.</p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--collapse">
+    <code class="example-code text-center">$grid-collapse: true<br>@include container;</code></code>
+    <div class="col-3"><code class="example-code">@include columns(3);</code></div>
+    <div class="col-4"><code class="example-code">@include columns(4);</code></div>
+    <div class="col-5"><code class="example-code">@include columns(5);</code></div>
+  </div>
+</div>
+
+<section id="flexbox" class="section section--example">
+  <div class="writing">
+    <h2>Flexbox support</h2>
+    <p class="flush-bottom">Columns are floats by default, but if you want or prefer Flexbox, set <code class="no-break">$grid-flexbox: true</code>.</p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--flexbox">
+    <code class="example-code text-center">$grid-flexbox: true;<br>@include container;</code>
+    <div class="col-l"><code class="example-code">@include columns(4);<br>height: 7em;</code></div>
+    <div class="col-m"><code class="example-code">@include columns(4);<br>align-self: center;</code></div>
+    <div class="col-r"><code class="example-code">@include columns(4);<br>align-self: flex-end;</code></div>
+  </div>
+</div>
+
+<section id="rtl" class="section section--example">
+  <div class="writing">
+    <h2>Right-to-Left support</h2>
+    <p class="flush-bottom">Enable RTL support for right-to-left languages by setting <code class="no-break">$grid-rtl: true</code>.</p>
+  </div>
+</section>
+<div class="example__container">
+  <div class="container example example--rtl">
+    <code class="example-code text-center">$grid-rtl: true;<br>@include container;</code>
+    <div class="col-3"><code class="example-code">@include columns(3);</code></div>
+    <div class="col-4"><code class="example-code">@include columns(4);</code></div>
+    <div class="col-5"><code class="example-code">@include columns(5, last);</code></div>
+  </div>
+</div>
 </body>
 </html>

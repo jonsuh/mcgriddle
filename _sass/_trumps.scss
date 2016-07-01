@@ -1,0 +1,218 @@
+// Trumps
+// ==================================================
+
+// Hero
+// ==================================================
+.section--hero {
+  text-align: center;
+  color: $white;
+  background-color: $blue;
+  background-image: radial-gradient(farthest-corner at 0 0, $purple, $blue 90%);
+
+  ::selection {
+    color: $white;
+    background: $blue;
+  }
+}
+
+.hero__inner {
+  padding-top: em(20);
+  padding-bottom: em(20);
+
+  @include mq(medium) {
+    padding-top: em(40);
+    padding-bottom: em(40);
+  }
+}
+
+.hero-description {
+  font-size: 1.05em;
+  color: rgba($white, 0.7);
+
+  max-width: em(250);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__buttons {
+  display: inline-block;
+  cursor: default;
+
+  .button {
+    margin-top: 0.5em;
+  }
+}
+.hero__buttons:hover {
+  .button:not(:hover) {
+    opacity: 0.3;
+  }
+}
+
+@include mq(medium) {
+  .hero__inner {
+    max-width: em(565);
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-title {
+    margin-bottom: 0;
+  }
+
+  .hero-description {
+    text-align: left;
+    max-width: em(265);
+    margin-right: 0;
+    margin-bottom: 0.5em;
+  }
+}
+
+@include mq(large) {
+  .hero__inner {
+    max-width: em(590);
+  }
+
+  .hero-description {
+    margin-bottom: 0;
+  }
+}
+
+// Example
+// ==================================================
+.section--example {
+  padding-bottom: em(15);
+
+  @include mq(medium) {
+    padding-bottom: em(30);
+  }
+}
+
+.example__container {
+  margin-bottom: em(30);
+  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  @include mq(500) {
+    overflow: hidden;
+  }
+
+  @include mq(medium) {
+    margin-bottom: em(50);
+  }
+}
+
+.example {
+  min-width: em(500);
+  padding-bottom: 0.5em;
+
+  > .example-code.text-center:nth-of-type(1) {
+    position: relative;
+
+    &::before {
+      content: "";
+      background: linear-gradient(to right,
+        $purple 5.64779%,
+        transparent 5.64779%,
+        transparent 8.57748%,
+        $purple 8.57748%,
+        $purple 14.22527%,
+        transparent 14.22527%,
+        transparent 17.15496%,
+        $purple 17.15496%,
+        $purple 22.80275%,
+        transparent 22.80275%,
+        transparent 25.73244%,
+        $purple 25.73244%,
+        $purple 31.38023%,
+        transparent 31.38023%,
+        transparent 34.30992%,
+        $purple 34.30992%,
+        $purple 39.95771%,
+        transparent 39.95771%,
+        transparent 42.8874%,
+        $purple 42.8874%,
+        $purple 48.53519%,
+        transparent 48.53519%,
+        transparent 51.46488%,
+        $purple 51.46488%,
+        $purple 57.11267%,
+        transparent 57.11267%,
+        transparent 60.04236%,
+        $purple 60.04236%,
+        $purple 65.69015%,
+        transparent 65.69015%,
+        transparent 68.61984%,
+        $purple 68.61984%,
+        $purple 74.26763%,
+        transparent 74.26763%,
+        transparent 77.19732%,
+        $purple 77.19732%,
+        $purple 82.84511%,
+        transparent 82.84511%,
+        transparent 85.7748%,
+        $purple 85.7748%,
+        $purple 91.42259%,
+        transparent 91.42259%,
+        transparent 94.35228%,
+        $purple 94.35228%,
+        $purple 100%
+      );
+
+      min-width: em(500, 13.6);
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: em(-200);
+      opacity: 0.05;
+      z-index: -1;
+    }
+  }
+
+  [class^="col"] {
+    background-color: $yellow;
+  }
+
+  .container {
+    background-color: $blue-light;
+
+    [class^="col"] {
+      background-color: $yellow;
+    }
+  }
+}
+
+.example__container:nth-of-type(odd) .example {
+  [class^="col"] {
+    background-color: $blue-light;
+  }
+
+  .container {
+    background-color: $yellow;
+
+    [class^="col"] {
+      background-color: $blue-light;
+    }
+  }
+}
+.example__container + .example__container {
+  margin-top: 0.5em;
+}
+
+.example-code {
+  width: 100%;
+  max-width: 100vw;
+  padding: 0.5em;
+  display: block;
+}
+
+span.comment {
+  color: darken($grey, 10%);
+}
+

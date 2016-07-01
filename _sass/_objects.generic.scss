@@ -1,0 +1,19 @@
+// Generic
+// ==================================================
+.frac {
+  font-feature-settings: "frac";
+}
+
+@include mq(small) {
+  .list-2-columns {
+    columns: 2;
+  }
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+.text-center {
+  text-align: center;
+}
