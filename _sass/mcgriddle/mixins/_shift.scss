@@ -1,7 +1,7 @@
 // ==================================================
 // Shift
 // ==================================================
-@mixin shift($size: 1, $percent: true) {
+@mixin shift($size: 1, $gutter: true, $percent: true) {
   $margin: left;
 
   @if $grid-rtl == true {
@@ -10,14 +10,16 @@
 
   $shift: column-width($size, $percent);
 
-  // @if $size < 1 {
-  //   $shift: $shift-initial + gutter-width($percent) - (gutter-width($percent) * $size);
-  // }
-  // @else {
-    @if $grid-collapse == false {
+  @if $grid-collapse == false {
+    @if $size < 1 {
+      @if $gutter == false {
+        $shift: $shift - gutter-width($percent);
+      }
+    }
+    @else if $gutter == true {
       $shift: $shift + gutter-width($percent);
     }
-  // }
+  }
 
   margin-#{$margin}: $shift;
 }
