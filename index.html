@@ -60,9 +60,9 @@
         <li><a href="#containers">Containers</a></li>
         <li><a href="#columns">Columns</a></li>
         <li><a href="#minor-major">Minor/Major columns</a></li>
-        <li><a href="#relative">Relative columns</a></li>
         <li><a href="#shift">Shift columns</a></li>
         <li><a href="#center">Center columns</a></li>
+        <li><a href="#relative">Relative columns</a></li>
         <li><a href="#nest">Nest columns</a></li>
         <li><a href="#collapse">Collapse gutters</a></li>
         <li><a href="#flexbox">Flexbox support</a></li>
@@ -120,7 +120,7 @@
   <section id="minor-major" class="section section--example">
     <div class="writing">
       <h2>Minor/Major columns</h2>
-      <p class="flush-bottom">Create minor and major-based columns with the <code class="no-break">columns()</code> mixin. Set the size of minor <code class="no-break">$grid-minor: 1/3</code> (where 1/3 is one-third of your grid) and the size of major is calculated based on the remainder.</p>
+      <p class="flush-bottom">Create major and minor-based columns with the <code class="no-break">columns()</code> mixin. Set the size of minor <code class="no-break">$grid-minor: 1/3</code> (where 1/3 is one-third of your grid) and the size of major is calculated based on the remainder.</p>
     </div>
   </section>
   <div class="example__container">
@@ -131,32 +131,19 @@
     </div>
   </div>
 
-  <section id="relative" class="section section--example">
-    <div class="writing">
-      <h2>Relative columns</h2>
-      <p class="flush-bottom">Create relative columns to break out of your grid with the <code class="no-break">columns()</code> mixin and passing a value in the <code class="no-break"># of #</code> format as the first argument (e.g. <code class="no-break">2 of 9</code> tells the element to span 2 columns in a 9-column grid). Relative values can be written in shorthand by eliminating “of”: <code class="no-break">@include columns(2 9);</code></p>
-    </div>
-  </section>
-  <div class="example__container">
-    <div class="container example example--relative">
-      <code class="example-code text-center">@include container;</code>
-      <div class="col-1-7"><code class="example-code">@include columns(2 of 9);</code></div>
-      <div class="col-2-7"><code class="example-code">@include columns(3 of 9);</code></div>
-      <div class="col-4-7"><code class="example-code">@include columns(4 of 9, last);</code></div>
-    </div>
-  </div>
-
   <section id="shift" class="section section--example">
     <div class="writing">
       <h2 class="flush-bottom">Shift columns</h2>
-      <p>Offset columns with the <code class="no-break">shift()</code> mixin. Decimal values are also accepted.</p>
+      <p>Offset columns with the <code class="no-break">shift()</code> mixin. The gutter is included by default, but you can exclude it by passing <code>false</code> as the second argument. The gutter is excluded if <a href="#collapse">gutters are collapsed</a>.</p>
     </div>
   </section>
   <div class="example__container">
     <div class="container example example--shift">
       <code class="example-code text-center">@include container;</code>
-      <div class="col-6-s"><code class="example-code">@include columns(6);<br>@include shift(1);</code></div>
-      <div class="col-5"><code class="example-code">@include columns(5, last);</code></div>
+      <div class="col-7-s"><code class="example-code">@include columns(7);<br>@include shift(2);</code></div>
+
+      <div class="col-7-sf"><code class="example-code">@include columns(7);<br>@include shift(2, false);</code></div>
+
     </div>
   </div>
 
@@ -174,10 +161,25 @@
     </div>
   </div>
 
+  <section id="relative" class="section section--example">
+    <div class="writing">
+      <h2>Relative columns</h2>
+      <p class="flush-bottom">Create relative columns to break out of your grid with the <code class="no-break">columns()</code> mixin and passing a value in the <code class="no-break"># of #</code> format as the first argument (e.g. <code class="no-break">2 of 9</code> tells the element to span 2 columns in a 9-column grid). Values can also be written in shorthand by eliminating “of”: <code class="no-break">@include columns(2 9);</code></p>
+    </div>
+  </section>
+  <div class="example__container">
+    <div class="container example example--relative">
+      <code class="example-code text-center">@include container;</code>
+      <div class="col-1-7"><code class="example-code">@include columns(2 of 9);</code></div>
+      <div class="col-2-7"><code class="example-code">@include columns(3 of 9);</code></div>
+      <div class="col-4-7"><code class="example-code">@include columns(4 of 9, last);</code></div>
+    </div>
+  </div>
+
   <section id="nest" class="section section--example">
     <div class="writing">
       <h2>Nest columns</h2>
-      <p class="flush-bottom">Nest columns by wrapping nested columns in another container.</p>
+      <p class="flush-bottom">Nest columns by wrapping nested columns in a container.</p>
     </div>
   </section>
   <div class="example__container">

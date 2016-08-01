@@ -29,6 +29,8 @@
   }
 }
 
+// Containers
+// ==================================================
 .example__container--containers {
   margin-bottom: 0;
 }
@@ -49,6 +51,8 @@
   }
 }
 
+// Columns
+// ==================================================
 .example--columns {
   .col-l {
     @include columns(6);
@@ -73,6 +77,8 @@
   }
 }
 
+// Minor/Major
+// ==================================================
 .example--minormajor {
   .col-minor {
     @include columns(minor);
@@ -83,28 +89,36 @@
   }
 }
 
+// Shift
+// ==================================================
 .example--shift {
-  .col-6-s {
-    @include columns(6);
-    @include shift(1);
+  .col-7-s {
+    @include columns(7);
+    @include shift(2);
   }
 
-  .col-5 {
-    @include columns(5, last);
-  }
-}
-
-.example--center {
-  .col-pct {
-    @include columns(8, center);
-  }
-
-  .col-mw {
-    @include columns(8, center, max);
+  .col-7-sf {
+    @include columns(7);
+    @include shift(2, false);
     background-color: $blue-light !important;
   }
 }
 
+// Center
+// ==================================================
+.example--center {
+  .col-pct {
+    @include columns(8, center);
+    background-color: $yellow !important;
+  }
+
+  .col-mw {
+    @include columns(8, center, max);
+  }
+}
+
+// Relative
+// ==================================================
 .example--relative {
   .col-1-7 {
     @include columns(2 of 9);
@@ -124,6 +138,8 @@
   }
 }
 
+// Nest
+// ==================================================
 .example--nest {
   .col-l {
     @include columns(8);
@@ -140,7 +156,10 @@
   }
 }
 
+// Collapse
+// ==================================================
 @include grid-collapse(true);
+
 .example--collapse {
   > .example-code.text-center:nth-of-type(1) {
     &::before {
@@ -177,7 +196,7 @@
   }
   .col-4 {
     @include columns(4);
-    background-color: $yellow !important;
+    background-color: $blue-light !important;
   }
   .col-5 {
     @include columns(5, last);
@@ -185,7 +204,11 @@
 }
 
 @include grid-collapse;
+
+// RTL
+// ==================================================
 @include grid-direction(rtl);
+
 .example--rtl {
   .col-3 {
     @include columns(3);
@@ -199,7 +222,11 @@
 }
 
 @include grid-direction;
+
+// Flexbox
+// ==================================================
 @include grid-flexbox(true);
+
 .example--flexbox {
   @include container;
 
