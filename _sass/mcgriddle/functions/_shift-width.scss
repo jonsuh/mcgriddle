@@ -1,8 +1,8 @@
 // ==================================================
-// Shift
+// Shift Width
 // ==================================================
 @mixin shift($_columns: 1, $_percent: true) {
   $_shift: column-width($_columns, $_percent) + gutter-width($_percent);
 
-  margin-left: $_shift;
+  @return $_shift;
 }
