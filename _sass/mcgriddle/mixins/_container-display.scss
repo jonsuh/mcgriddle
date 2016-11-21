@@ -1,12 +1,12 @@
 // ==================================================
 // Container Display
 // ==================================================
-@mixin container-display($flexbox: default) {
-  @if $flexbox == default {
-    $flexbox: $grid-flexbox;
+@mixin container-display($_flexbox: default) {
+  @if $_flexbox == default {
+    $_flexbox: $grid-flexbox;
   }
 
-  @if $flexbox == true {
+  @if $_flexbox == true {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
