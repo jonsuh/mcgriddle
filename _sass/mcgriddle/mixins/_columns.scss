@@ -1,67 +1,59 @@
 // ==================================================
 // Columns
 // ==================================================
-@mixin columns($size: 1, $position: default, $max-width: false) {
-  @if $max-width == max or $max-width == true {
+@mixin columns($_columns: 1, $_position: default, $_max-width: false) {
+  @if $_max-width == max or $_max-width == true {
     width: 100%;
-    $column-width: column-width($size, false);
+    $_column-width: column-width($_columns, false);
 
-    @if $grid-collapse == true {
-      @if $size < 1 {
-        $size: 1;
-      }
-
-      $column-width: $column-width - (gutter-width(false) * ($size - 1));
-    }
-
-    max-width: $column-width;
+    max-width: $_column-width;
   }
-  @else { // $max-width == default
-    width: column-width($size);
+  @else { // $_max-width == default
+    width: column-width($_columns);
   }
 
-  @if $position == center {
+  @if $_position == center {
     margin-left: auto;
     margin-right: auto;
   }
   @else {
-    $float: left;
-    $margin: right;
+    $_float: left;
+    $_margin: right;
 
     @if ($grid-flexbox == true and $grid-flexbox-justify != space-between) or $grid-flexbox == false {
       @if $grid-flexbox == true {
         @if $grid-flexbox-justify == flex-end {
-          $margin: left;
+          $_margin: left;
 
           @if $grid-rtl == true {
-            $margin: right;
+            $_margin: right;
           }
         }
         // $grid-flexbox-justify == flex-start, flex-end, center
         @else {
           @if $grid-rtl == true {
-            $margin: left;
+            $_margin: left;
           }
         }
       }
       // $grid-flexbox == false
       @else {
         @if $grid-rtl == true {
-          $float: right;
-          $margin: left;
+          $_float: right;
+          $_margin: left;
         }
       }
 
       @if $grid-flexbox == true {
         @if $grid-flexbox-justify != space-between {
-          margin-#{$margin}: gutter-width();
+          margin-#{$_margin}: gutter-width();
         }
       }
       @else { // $grid-flexbox == false
-        @if $position != last and $grid-collapse == false {
-          margin-#{$margin}: gutter-width();
+        @if $_position != last and $grid-collapse == false {
+          margin-#{$_margin}: gutter-width();
         }
-        float: $float;
+        float: $_float;
       }
     }
   }

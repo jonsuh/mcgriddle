@@ -1,21 +1,13 @@
 // ==================================================
 // Container
 // ==================================================
-@mixin container($size: true) {
+@mixin container($_columns: true) {
   @include container-display;
 
-  @if type-of($size) == number and $size > 0 {
-    $_grid-gutter-calc: $grid-gutter * ($grid-columns - 1);
-    $grid-col         : ($grid-width - ($_grid-gutter-calc)) / $grid-columns;
-    $gutter-count     : $size - 1;
-
-    @if $size < 1 {
-      $gutter-count: 1;
-    }
-
-    max-width: ($grid-col * $size) + ($grid-gutter * $gutter-count);
+  @if type-of($_columns) == number and $_columns > 0 {
+    max-width: column-width($_columns, false);
   }
-  @else if $size == true or $size != false {
+  @else if $_columns == true or $_columns != false {
     margin-left: auto;
     margin-right: auto;
     max-width: $grid-width;
