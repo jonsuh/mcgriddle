@@ -26,7 +26,7 @@ $grid-flexbox: false;
 
 ## Installation
 
-1. Install via [npm](https://www.npmjs.com/package/mcgriddle), yar or [Bower](http://bower.io).
+1. Install via [npm](https://www.npmjs.com/package/mcgriddle), yarn or [Bower](http://bower.io).
   ```
   npm install mcgriddle
 
@@ -72,7 +72,7 @@ First, create a settings file (`_mcgriddle-settings.scss`) and import it _before
 @import "mcgriddle";
 ```
 
-Then edit the settings file to customize/override default grid settings. The following is a list of default settings:
+Then edit the settings file to customize/override default grid settings. The following is a list of settings and its defaults:
 
 ```scss
 $grid-width   : 64em;
