@@ -1,6 +1,6 @@
 {
   "name": "mcgriddle",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "license": "MIT",
   "author": {
@@ -14,7 +14,7 @@
     "grid",
     "flexbox",
     "sass",
-    "scss",
+    "scss"
   ],
   "repository": {
     "type": "git",
@@ -24,6 +24,10 @@
     "url": "https://github.com/jonsuh/mcgriddle/issues"
   },
   "ignore": [
-    "css"
+    "Gemfile",
+    "lib/",
+    "mcgriddle.gemspec",
+    "package.json",
+    "yarn.lock"
   ]
 }
