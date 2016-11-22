@@ -8,7 +8,7 @@
     $_margin: right;
   }
 
-  $_shift: column-width($_columns, $_percent) + gutter-width($_percent);
+  $_shift: shift-width($_columns, $_percent);
 
   margin-#{$_margin}: $_shift;
 }
