@@ -1,5 +1,31 @@
 {
   "name": "mcgriddle",
+  "version": "0.2",
+  "description": "",
+  "license": "MIT",
+  "author": {
+    "name": "Jonathan Suh",
+    "email": "hello@jonsuh.com",
+    "url": "https://jonsuh.com/mcgriddle"
+  },
+  "main": "_sass/mcgriddle/_mcgriddle.scss",
+  "keywords": [
+    "css",
+    "grid",
+    "flexbox",
+    "sass",
+    "scss",
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonsuh/mcgriddle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonsuh/mcgriddle/issues"
+  },
+  "ignore": [
+    "css"
+  ],
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.18.1",
