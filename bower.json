@@ -14,7 +14,7 @@
     "grid",
     "flexbox",
     "sass",
-    "scss"
+    "scss",
   ],
   "repository": {
     "type": "git",
@@ -25,17 +25,5 @@
   },
   "ignore": [
     "css"
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "browser-sync": "^2.18.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-csscomb": "^3.0.8",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.9.0"
-  }
+  ]
 }
