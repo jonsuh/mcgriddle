@@ -26,31 +26,46 @@ $grid-flexbox: false;
 
 ## Installation
 
-1. Install via [npm](https://www.npmjs.com/package/mcgriddle) or yarn.
+1. Install via [npm](https://www.npmjs.com/package/mcgriddle), yar or [Bower](http://bower.io).
   ```
   npm install mcgriddle
 
   yarn add mcgriddle
+
+  bower install mcgriddle
   ```
 
-  McGriddle is also available via [Bower](http://bower.io) (`bower install mcgriddle`).
+  Also available as a [Ruby gem](https://rubygems.org/gems/mcgriddle) to use within your Rails application—see [below](#install-for-ruby-on-rails) for more information.
+
+  Or to manually install it, [download](https://github.com/jonsuh/mcgriddle/archive/master.zip) and unzip the source files. Then copy the files from the `_sass/mcgriddle` directory into your project.
 
 2. Import the `_mcgriddle.scss` file in your Sass manifest file:
 
   ```scss
-  @import "path/to/mcgriddle";
+  @import "mcgriddle";
   ```
 
-## Manual Installation
+### Install for Ruby on Rails
 
-Alternatively, you can manually install McGriddle.
+1. Add McGriddle to your Gemfile.
 
-1. [Download](https://github.com/jonsuh/mcgriddle/archive/master.zip) and unzip the source files.
-2. Copy the files from the `_sass/mcgriddle` directory into your project.
+  ```
+  gem 'mcgriddle'
+  ```
+
+2. Run `bundle install`.
+3. Include McGriddle by using Sass’s native `@import`*
+
+  ```scss
+  // application.scss
+  @import "mcgriddle";
+  ```
+
+  \* [More information](https://blog.pivotal.io/pivotal-labs/labs/structure-your-sass-files-with-import) on why Sass’s native `@import` + why you should ditch Sprockets directives altogether.
 
 ## Usage
 
-First, create a settings file (`_mcgriddle-settings.scss`) and import it before importing McGriddle.
+First, create a settings file (`_mcgriddle-settings.scss`) and import it _before_ importing McGriddle.
 
 ```scss
 @import "mcgriddle-settings";
