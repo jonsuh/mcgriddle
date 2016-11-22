@@ -1,6 +1,6 @@
 {
   "name": "mcgriddle",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "license": "MIT",
   "author": {
@@ -23,9 +23,6 @@
   "bugs": {
     "url": "https://github.com/jonsuh/mcgriddle/issues"
   },
-  "ignore": [
-    "css"
-  ],
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.18.1",
