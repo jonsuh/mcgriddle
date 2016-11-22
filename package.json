@@ -10,7 +10,6 @@
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.9.0",
-    "mq-sass": "^0.6.0"
+    "gulp-sourcemaps": "^1.9.0"
   }
 }
