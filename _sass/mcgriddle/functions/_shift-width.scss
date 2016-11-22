@@ -1,14 +1,8 @@
 // ==================================================
-// Shift
+// Shift Width
 // ==================================================
 @mixin shift($_columns: 1, $_percent: true) {
-  $_margin: left;
-
-  @if $grid-rtl == true {
-    $_margin: right;
-  }
-
   $_shift: column-width($_columns, $_percent) + gutter-width($_percent);
 
-  margin-#{$_margin}: $_shift;
+  @return $_shift;
 }

@@ -1,89 +1,78 @@
 // ==================================================
 // Column Width
 // ==================================================
-@function column-width($size: 1, $percent: true) {
-  $_grid-columns: $grid-columns;
+@function column-width($_columns: 1, $_percent: true) {
+  $_grid-columns        : $grid-columns;
 
-  $column-width    : $grid-width;
-  $column-width-pct: 100%;
-  $grid-gutter-pct : gutter-width();
+  $_column-width        : $grid-width;
+  $_column-width-percent: 100%;
 
-  // '#/#' or '# of #'
-  @if type-of($size) == string {
-    $size        : str-replace($size, " ");
-    $index       : str-index($size, "/");
-    $index-offset: 1;
-
-    @if $index == null {
-      $index       : str-index($size, "of");
-      $index-offset: 2;
+  // major or minor
+  @if $_columns == major or $_columns == minor {
+    @if $_columns == major {
+      $_columns: 1 - $grid-minor;
+    }
+    @else {
+      $_columns: $grid-minor;
     }
 
-    @if $index {
-      $_grid-columns: to-number(str-slice($size, $index + $index-offset, str-length($size)));
-      $size         : to-number(str-slice($size, 1, $index - 1));
+    $_columns: $grid-columns * $_columns;
+  }
+  // '#/#'
+  @else if type-of($_columns) == string {
+    $_columns     : str-replace($_columns, " ");
+    $_index       : str-index($_columns, "/");
+    $_index-offset: 1;
+
+    @if $_index == null {
+      $_index       : str-index($_columns, "of");
+      $_index-offset: 2;
+    }
+
+    @if $_index {
+      $_grid-columns: to-number(str-slice($_columns, $_index + $_index-offset, str-length($_columns)));
+      $_columns     : to-number(str-slice($_columns, 1, $_index - 1));
     }
   }
   // # of # or # #
-  @else if type-of($size) == list {
-    @if length($size) == 3 {
-      $_grid-columns: nth($size, 3);
+  @else if type-of($_columns) == list {
+    @if length($_columns) == 3 {
+      $_grid-columns: nth($_columns, 3);
     }
     @else {
-      $_grid-columns: nth($size, 2);
+      $_grid-columns: nth($_columns, 2);
     }
 
-    $size: nth($size, 1);
+    $_columns: nth($_columns, 1);
   }
 
-  // Integers and decimals
-  @if type-of($size) == number and unitless($size) and $size > 0 {
-    @if ($size < $_grid-columns) {
-      $_grid-gutter-calc: $grid-gutter * ($_grid-columns - 1);
+  // calculate column width
+  @if $grid-collapse == true {
+    $_column-width: ($grid-width / $_grid-columns) * $_columns;
 
-      @if $grid-collapse == true {
-        $_grid-gutter-calc: 0;
-        $grid-gutter-pct  : 0;
-      }
-
-      $grid-col    : ($grid-width - ($_grid-gutter-calc)) / $_grid-columns;
-      $grid-col-pct: $grid-col * 100% / $grid-width;
-      $gutter-count: $size - 1;
-
-      @if $size < 1 {
-        $gutter-count: 1;
-      }
-
-      $column-width    : ($grid-col * $size) + ($grid-gutter * $gutter-count);
-      $column-width-pct: ($grid-col-pct * $size) + ($grid-gutter-pct * $gutter-count);
+    @if $_percent == true {
+      $_column-width-percent: $_column-width * 100% / $grid-width;
     }
-  }
-  // Minor/major
-  @else {
-    $_grid-gutter: $grid-gutter;
-
-    @if $grid-collapse == true {
-      $_grid-gutter   : 0;
-      $grid-gutter-pct: 0;
-    }
-
-    @if $size == major {
-      $size: 1 - $grid-minor;
-    }
-    @else {
-      $size: $grid-minor;
-    }
-
-    $column-count: 1 / $size;
-
-    $column-width    : ($grid-width - ($_grid-gutter * ($column-count - 1))) / $column-count;
-    $column-width-pct: (100% - ($grid-gutter-pct * ($column-count - 1))) / $column-count;
-  }
-
-  @if $percent != true and $percent != % {
-    @return $column-width;
   }
   @else {
-    @return $column-width-pct;
+    // $_column-count        : ceil($_grid-columns / $_columns);
+    $_column-count        : $_grid-columns / $_columns;
+
+    $_gutter-total-width  : $grid-gutter * ($_column-count - 1);
+    $_grid-remainder-width: $grid-width - $_gutter-total-width;
+
+    $_column-width        : $_grid-remainder-width / $_column-count;
+
+    @if $_percent == true {
+      $_column-width-percent: $_column-width * 100% / $grid-width;
+    }
+  }
+
+  // return column width in absolute or percent value
+  @if $_percent == true {
+    @return $_column-width-percent;
+  }
+  @else {
+    @return $_column-width;
   }
 }

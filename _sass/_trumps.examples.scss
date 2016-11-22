@@ -96,12 +96,6 @@
     @include columns(7);
     @include shift(2);
   }
-
-  .col-7-sf {
-    @include columns(7);
-    @include shift(2, false);
-    background-color: $blue-light !important;
-  }
 }
 
 // Center

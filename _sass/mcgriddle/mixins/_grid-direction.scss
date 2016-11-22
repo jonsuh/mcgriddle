@@ -1,13 +1,13 @@
 // ==================================================
 // Grid Direction
 // ==================================================
-@mixin grid-direction($rtl: default) {
-  @if $rtl == default or $rtl != rtl {
-    $rtl: false;
+@mixin grid-direction($_rtl: default) {
+  @if $_rtl == default or $_rtl != rtl {
+    $_rtl: false;
   }
-  @else if $rtl == rtl {
-    $rtl: true;
+  @else if $_rtl == rtl {
+    $_rtl: true;
   }
 
-  $grid-rtl: $rtl !global;
+  $grid-rtl: $_rtl !global;
 }

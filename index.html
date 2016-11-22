@@ -120,7 +120,7 @@
   <section id="minor-major" class="section section--example">
     <div class="writing">
       <h2>Minor/Major columns</h2>
-      <p class="flush-bottom">Create major and minor-based columns with the <code class="no-break">columns()</code> mixin. Set the size of minor <code class="no-break">$grid-minor: 1/3</code> (where 1/3 is one-third of your grid) and the size of major is calculated based on the remainder.</p>
+      <p class="flush-bottom">Create major and minor-based columns with the <code class="no-break">columns()</code> mixin. Set the size of minor <code class="no-break">$grid-minor: 1/3</code> (where 1/3 is one-third [33.3%] of your grid) and the size of major is calculated based on the remainder.</p>
     </div>
   </section>
   <div class="example__container">
@@ -134,16 +134,13 @@
   <section id="shift" class="section section--example">
     <div class="writing">
       <h2 class="flush-bottom">Shift columns</h2>
-      <p>Offset columns with the <code class="no-break">shift()</code> mixin. The gutter is included by default, but you can exclude it by passing <code>false</code> as the second argument. The gutter is excluded if <a href="#collapse">gutters are collapsed</a>.</p>
+      <p>Offset columns with the <code class="no-break">shift()</code> mixin. The gutter is excluded if <a href="#collapse">gutters are collapsed</a>.</p>
     </div>
   </section>
   <div class="example__container">
     <div class="container example example--shift">
       <code class="example-code text-center">@include container;</code>
       <div class="col-7-s"><code class="example-code">@include columns(7);<br>@include shift(2);</code></div>
-
-      <div class="col-7-sf"><code class="example-code">@include columns(7);<br>@include shift(2, false);</code></div>
-
     </div>
   </div>
 
