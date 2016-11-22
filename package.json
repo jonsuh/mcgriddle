@@ -14,7 +14,7 @@
     "grid",
     "flexbox",
     "sass",
-    "scss",
+    "scss"
   ],
   "repository": {
     "type": "git",
