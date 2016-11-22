@@ -71,7 +71,7 @@ $grid-rtl     : false;
 
 ---
 
-### Read the [documentation](https://jonsuh.com/hamburgers) for full list and explanation of settings, mixins and functions.
+### Read the [documentation](https://jonsuh.com/mcgriddle) for full list and explanation of settings, mixins and functions.
 
 ---
 
