@@ -196,3 +196,9 @@ Right-to-left support for RTL languages: `$grid-rtl: true`. (Default is `false`)
 $grid-rtl: true;
 .container { @include container; }
 ```
+
+## That’s it?
+
+The documentation is still a work-in-progress, so there are features and functionality that have yet to be properly documented. I also have a couple more features I’d like to build (when and if I decide to), but aside from that… yep, that’s it.
+
+I originally created McGriddle for me—I wanted something stupid simple and straight forward. Therefore you’re looking for something more robust, I’d suggest [Bourbon Neat](https://github.com/thoughtbot/neat) or [Susy](http://susy.oddbird.net/).
