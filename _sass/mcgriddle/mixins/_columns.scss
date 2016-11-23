@@ -46,12 +46,12 @@
 
       @if $grid-flexbox == true {
         @if $grid-flexbox-justify != space-between {
-          margin-#{$_margin}: gutter-width;
+          margin-#{$_margin}: gutter-width();
         }
       }
       @else { // $grid-flexbox == false
         @if $_position != last and $grid-collapse == false {
-          margin-#{$_margin}: gutter-width;
+          margin-#{$_margin}: gutter-width();
         }
         float: $_float;
       }
