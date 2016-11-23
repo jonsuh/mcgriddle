@@ -6,7 +6,6 @@ McGriddle is a (mostly) get-out-of-your-way Sass library designed to help you bu
 $grid-width  : 64em;
 $grid-gutter : 1.875em;
 $grid-columns: 12;
-$grid-flexbox: false;
 ```
 
 …and you’re ready to build.
