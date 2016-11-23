@@ -5,7 +5,9 @@
   @if $_max-width == max or $_max-width == true {
     $_column-width: column-width($_columns, false);
 
-    width: 100%;
+    @if $grid-flexbox == true {
+      width: 100%;
+    }
     max-width: $_column-width;
   }
   @else { // $_max-width == default
