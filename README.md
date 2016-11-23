@@ -75,13 +75,15 @@ First, create a settings file (`_mcgriddle-settings.scss`) and import it _before
 Then edit the settings file to customize/override default grid settings. The following is a list of settings and its defaults:
 
 ```scss
-$grid-width   : 64em;
-$grid-gutter  : 1.875em;
-$grid-columns : 12;
-$grid-minor   : 1/3;
-$grid-flexbox : false;
-$grid-collapse: false;
-$grid-rtl     : false;
+$grid-width          : 64em;
+$grid-gutter         : 1.875em;
+$grid-columns        : 12;
+$grid-minor          : 1/3;
+$grid-flexbox        : false;
+$grid-flexbox-wrap   : wrap;
+$grid-flexbox-justify: flex-start;
+$grid-collapse       : false;
+$grid-rtl            : false;
 ```
 
 ---

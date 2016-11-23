@@ -3,9 +3,9 @@
 // ==================================================
 @mixin columns($_columns: 1, $_position: default, $_max-width: false) {
   @if $_max-width == max or $_max-width == true {
-    width: 100%;
     $_column-width: column-width($_columns, false);
 
+    width: 100%;
     max-width: $_column-width;
   }
   @else { // $_max-width == default
@@ -20,41 +20,17 @@
     $_float: left;
     $_margin: right;
 
-    @if ($grid-flexbox == true and $grid-flexbox-justify != space-between) or $grid-flexbox == false {
-      @if $grid-flexbox == true {
-        @if $grid-flexbox-justify == flex-end {
-          $_margin: left;
+    @if $grid-rtl == true {
+      $_float: right;
+      $_margin: left;
+    }
 
-          @if $grid-rtl == true {
-            $_margin: right;
-          }
-        }
-        // $grid-flexbox-justify == flex-start, flex-end, center
-        @else {
-          @if $grid-rtl == true {
-            $_margin: left;
-          }
-        }
-      }
-      // $grid-flexbox == false
-      @else {
-        @if $grid-rtl == true {
-          $_float: right;
-          $_margin: left;
-        }
-      }
+    @if $_position != last and $grid-collapse == false {
+      margin-#{$_margin}: gutter-width();
+    }
 
-      @if $grid-flexbox == true {
-        @if $grid-flexbox-justify != space-between {
-          margin-#{$_margin}: gutter-width();
-        }
-      }
-      @else { // $grid-flexbox == false
-        @if $_position != last and $grid-collapse == false {
-          margin-#{$_margin}: gutter-width();
-        }
-        float: $_float;
-      }
+    @if $grid-flexbox == false {
+      float: $_float;
     }
   }
 }
