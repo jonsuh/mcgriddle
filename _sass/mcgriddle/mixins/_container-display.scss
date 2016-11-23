@@ -9,7 +9,7 @@
   @if $_flexbox == true {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: $grid-flexbox-wrap;
     justify-content: $grid-flexbox-justify;
     &:after {
       display: none;
