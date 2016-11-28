@@ -87,7 +87,7 @@ $grid-rtl            : false;
 
 ---
 
-### Read the [documentation](https://jonsuh.com/mcgriddle) for full list and explanation of settings, mixins and functions.
+### Read the [documentation](https://jonsuh.com/mcgriddle/) for a full list and explanation of settings, mixins and functions.
 
 ---
 
@@ -196,6 +196,8 @@ Right-to-left support for RTL languages: `$grid-rtl: true`. (Default is `false`)
 $grid-rtl: true;
 .container { @include container; }
 ```
+
+_Be sure to read the [documentation](https://jonsuh.com/mcgriddle/) for a full list of settings, mixins and functions._
 
 ## That’s it?
 
