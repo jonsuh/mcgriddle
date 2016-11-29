@@ -1,7 +1,7 @@
 {
   "name": "mcgriddle",
   "version": "0.4.1",
-  "description": "",
+  "description": "A get-out-of-your-way Sass grid library. Supports flexbox.",
   "license": "MIT",
   "author": {
     "name": "Jonathan Suh",
