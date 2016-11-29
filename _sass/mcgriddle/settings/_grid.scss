@@ -6,7 +6,8 @@ $grid-gutter         : 1.875em !default;
 $grid-columns        : 12 !default;
 $grid-minor          : 1/3 !default;
 $grid-collapse       : false !default;
+$grid-rtl            : false !default;
+
 $grid-flexbox        : false !default;
 $grid-flexbox-wrap   : wrap !default;
 $grid-flexbox-justify: flex-start !default;
-$grid-rtl            : false !default;

@@ -78,11 +78,12 @@ $grid-width          : 64em;
 $grid-gutter         : 1.875em;
 $grid-columns        : 12;
 $grid-minor          : 1/3;
+$grid-collapse       : false;
+$grid-rtl            : false;
+
 $grid-flexbox        : false;
 $grid-flexbox-wrap   : wrap;
 $grid-flexbox-justify: flex-start;
-$grid-collapse       : false;
-$grid-rtl            : false;
 ```
 
 ---
