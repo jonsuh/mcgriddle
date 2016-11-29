@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors     = ["Jonathan Suh"]
   spec.email       = ["hello@jonsuh.com"]
   spec.homepage    = "https://jonsuh.com/mcgriddle"
-  spec.summary     = "A (mostly) get-out-of-your-way Sass grid library."
-  spec.description = "A (mostly) get-out-of-your-way Sass library designed to help you build based a grid system."
+  spec.summary     = "A get-out-of-your-way Sass grid library. Supports flexbox."
+  spec.description = "A get-out-of-your-way Sass library designed to help you build based a grid system. Supports flexbox."
   spec.license     = "MIT"
 
   spec.files         = `git ls-files`.split("\n")

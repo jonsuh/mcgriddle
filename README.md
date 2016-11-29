@@ -1,6 +1,6 @@
 # McGriddle
 
-McGriddle is a (mostly) get-out-of-your-way Sass library designed to help you build based a grid system. Set up your grid system…
+McGriddle is a get-out-of-your-way Sass library designed to help you build based a grid system. Suports [flexbox](#flexbox) (the grid is based on floats, by default). Set up your grid system…
 
 ```scss
 $grid-width  : 64em;
