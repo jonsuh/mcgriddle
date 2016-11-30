@@ -2,13 +2,18 @@
   "name": "mcgriddle",
   "version": "0.4.2",
   "description": "A get-out-of-your-way Sass grid library. Supports flexbox.",
+  "homepage": "https://jonsuh.com/mcgriddle",
   "license": "MIT",
   "author": {
     "name": "Jonathan Suh",
     "email": "hello@jonsuh.com",
     "url": "https://jonsuh.com/mcgriddle"
   },
-  "main": "_sass/mcgriddle/_mcgriddle.scss",
+  "main": "index.js",
+  "eyeglass": {
+    "needs": "*",
+    "exports": "eyeglass-exports.js"
+  },
   "keywords": [
     "css",
     "grid",
