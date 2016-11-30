@@ -8,7 +8,11 @@
     "email": "hello@jonsuh.com",
     "url": "https://jonsuh.com/mcgriddle"
   },
-  "main": "_sass/mcgriddle/_mcgriddle.scss",
+  "main": "index.js",
+  "eyeglass": {
+    "needs": "*",
+    "exports": "eyeglass-exports.js"
+  },
   "keywords": [
     "css",
     "grid",
